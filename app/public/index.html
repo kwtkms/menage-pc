@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="token" content="__TOKEN__">
+<title>Ménage PC</title>
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <span class="logo" data-icon="sparkle"></span>
+      <div><b>Ménage</b> PC<small>explorer · trier · libérer</small></div>
+    </div>
+    <nav class="views">
+      <button class="view-btn on" data-view="explore"><span data-icon="folder-line"></span>Explorer</button>
+      <button class="view-btn" data-view="clean"><span data-icon="broom"></span>Nettoyage</button>
+    </nav>
+    <div class="side-scroll">
+      <section class="side-sec"><h3>Accès rapide</h3><ul id="places" class="places"></ul></section>
+      <section class="side-sec"><h3>Disques</h3><ul id="drives" class="drives"></ul></section>
+      <section class="side-sec"><h3>Corbeille</h3><div id="bin" class="bin"></div></section>
+    </div>
+    <button id="quit" class="quit" title="Arrête le programme"><span data-icon="power"></span>Quitter</button>
+  </aside>
+
+  <main>
+    <section id="view-explore" class="view">
+      <header class="toolbar">
+        <div class="navbtns">
+          <button id="back" class="ib" title="Précédent (Alt+←)" data-icon="back"></button>
+          <button id="fwd" class="ib" title="Suivant (Alt+→)" data-icon="fwd"></button>
+          <button id="up" class="ib" title="Dossier parent (Retour arrière)" data-icon="up"></button>
+          <button id="refresh" class="ib" title="Actualiser et recalculer les tailles (F5)" data-icon="refresh"></button>
+        </div>
+        <div class="pathbox" id="pathbox" title="Clique dans le vide pour taper un chemin (Ctrl+L)">
+          <div class="crumbs" id="crumbs"></div>
+          <input id="pathInput" class="path-input" spellcheck="false" autocomplete="off" hidden>
+        </div>
+        <label class="search">
+          <span data-icon="search"></span>
+          <input id="q" placeholder="Filtrer ce dossier…" spellcheck="false" autocomplete="off">
+          <kbd id="qhint" hidden>Entrée = chercher aussi dans les sous-dossiers</kbd>
+        </label>
+      </header>
+      <div class="subbar">
+        <div class="chips" id="chips"></div>
+        <div class="subbar-right">
+          <span id="status" class="status"></span>
+          <button id="newdir" class="tb" title="Nouveau dossier"><span data-icon="folder-plus"></span></button>
+          <button id="toggleSystem" class="tb toggle" title="Afficher les fichiers système et les liens cachés">Système</button>
+          <button id="togglePreview" class="tb toggle" title="Afficher le panneau d'aperçu">Aperçu</button>
+        </div>
+      </div>
+      <div id="searchBanner" class="banner" hidden></div>
+      <div class="content">
+        <div class="listwrap" id="listwrap">
+          <div class="lhead" id="lhead"></div>
+          <div class="list" id="list" tabindex="0"></div>
+        </div>
+        <aside class="preview" id="preview"></aside>
+      </div>
+      <footer class="actionbar" id="actionbar" hidden></footer>
+    </section>
+
+    <section id="view-clean" class="view" hidden>
+      <div class="clean-scroll"><div class="clean-inner" id="clean"></div></div>
+      <footer class="actionbar" id="cleanbar" hidden></footer>
+    </section>
+  </main>
+</div>
+<div id="modal" class="modal-back" hidden></div>
+<div id="menu" class="menu" hidden></div>
+<div id="toasts" class="toasts"></div>
+<div id="dead" class="dead" hidden>
+  <div><h2>Ménage PC ne répond plus</h2><p>Le programme s'est arrêté. Relance-le avec <b>Lancer Ménage PC</b>, puis recharge cette page.</p></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
